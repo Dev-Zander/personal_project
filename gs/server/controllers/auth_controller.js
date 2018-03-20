@@ -35,7 +35,27 @@ module.exports = {
   },
 
   getUser: ( req, res, next ) => {
+    console.log(req.user)
     const { session } = req;
-    res.status(200).send( session.user );
-  }
+    res.status(200).send( req.user );
+  },
+
+  updateUser: (req, res) => {
+    const db = req.app.get('db')
+    db.users.update({id: req.user.id} , req.body, (err, user) => {
+
+    }).then( response => {
+      console.log(response)
+      res.status(200).send('true')
+    }).catch( err => res.status(500).send('Too bad'))
+    },
+
+    updateTrips: (req, res) =>{
+      const db = req.app.get('db')
+      db.trips.update({id: req.trips.id}, req.body, (err, id) => {
+      }).then( response => {
+        res.status(200).send('Trip Updated')
+      }).catch( err=> res.status(500).send('No Trip Added'))
+    }
 };
+

@@ -28,14 +28,14 @@ class Invite extends Component {
     }
 
     handleSubmit(event) {
-
+        event.preventDefault();
         let newName = this.state.name;
         let newEmail = this.state.email;
         let oldList = this.state.list;
         this.setState({
             list: [...oldList, {name: newName, email: newEmail}],
-            email: '',
-            name: ''
+            name: '',
+            email: ''
         })
     }
     render() {
@@ -61,12 +61,19 @@ class Invite extends Component {
                         </label>
                         <br />
                         <button>Cancel</button>
-                        <input type="submit" value="Submit" />
+                        <button type="submit" value = "submit">Add</button>
+
                     </form>
 
 
                 </div>
                 {listDisplay}
+                
+                { listDisplay.length ? 
+                <button type="submit" value = "submit">Submit</button> : null
+                
+            }
+
             </div>
         )
     }

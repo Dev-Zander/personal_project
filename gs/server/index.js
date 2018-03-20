@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const checkForSession = require('./middlewares/checkForSession')
 const invited = require('./controllers/invitedList_controller')
 const auth = require('./controllers/auth_controller')
+const cors = require('cors');
+
 
 
 const {
@@ -22,11 +24,12 @@ const {
 
 const app = express();
 
-massive(CONNECTION_STRING).then(db =>{
+massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
 })
 
-app.use( bodyParser.json())
+app.use(cors())
+app.use(bodyParser.json())
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
@@ -34,41 +37,42 @@ app.use(session({
 
 }))
 
-app.use( checkForSession )
+app.use(checkForSession)
 
 app.use(passport.initialize())
 app.use(passport.session())
 
-passport.use( new Auth0Strategy({
-    domain:DOMAIN,
-    clientID:CLIENT_ID,
-    clientSecret:CLIENT_SECRET,
-    callbackURL:CALLBACK_URL,
-    scope:'openid profile'
-},  
-function(accessToken, refreashToken, extraParams, profile, done){
-const db = app.get('db')
-db.find_user([profile.id]).then(users =>{
-    if(!users[0]){
-        db.create_user([profile.displayName, profile.id]).then(res =>{
-            done(null, res[0].id)
+passport.use(new Auth0Strategy({
+    domain: DOMAIN,
+    clientID: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    callbackURL: CALLBACK_URL
+},
+    function (accessToken, refreashToken, extraParams, profile, done) {
+        const db = app.get('db')
+        db.find_user([profile.id]).then(users => {
+            if (!users[0]) {
+                db.create_user([profile.displayName, profile.id]).then(res => {
+                    return done(null, res[0].auth_id)
+                })
+            } else {
+                return done(null, users[0].auth_id)
+            }
         })
-    }else{
-        done(null, users[0].id)
+        .catch(console.log)
     }
-})
-}
 ))
 
-passport.serializeUser( (id ,done)=> {
-    done(null,done)
+passport.serializeUser((id, done) => {
+    return done(null, id)
 })
 
-passport.deserializeUser( (id ,done)=> {
-    app.get('db').find_session_user([id]).then(
-        res =>{
-            done(null,user[0])
-        })
+passport.deserializeUser((id, done) => {
+    console.log('deserialize' + id)
+    app.get('db').find_user([id]).then(res => {
+        console.log(res)
+        return done(null, res[0])
+    })
 })
 
 app.get('/auth', passport.authenticate('auth0'))
@@ -82,6 +86,8 @@ app.post('/api/login', auth.login)
 app.post('/api/register', auth.register)
 app.post('/api/signout', auth.signout)
 app.get('/api/user', auth.getUser)
+app.put('/api/profile', auth.updateUser)
+app.put('/api/trips', auth.updateTrips)
 
 
 
