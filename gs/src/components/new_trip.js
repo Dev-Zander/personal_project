@@ -3,28 +3,30 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class NewTrip extends Component{
+    
 
-    saveTrip = () => {
+
+
+    tripInfo = () => {
         var newTripProps = {
             trip_name: this.refs.tripName.value,
             trip_location: this.refs.tripLocation.value,
             trip_start: this.refs.tripStart.value,
             trip_end: this.refs.tripEnd.value
         }
-        // console.log(newTripProps)
-        axios.put('/api/trips', newTripProps).then( res => {
-                alert('Trip added Successfully');
-                {console.log(res.data)
-                    this.props.history.push('/dashboard')
-            }
-        
-            }
+
+
+        axios.post('api/newTrip', newTripProps).then(
+            res => {alert('Trip added!');
+            
+                this.props.history.push('/dashboard')
+            
+        }
         )
-    }
+    
 
 
-
-
+}
     render(){
         return(
 
@@ -46,13 +48,13 @@ class NewTrip extends Component{
                     <input ref="tripLocation" placeholder="Trip Location" type="text" />
                     <br />
                     <h4>Trip Start Date</h4>
-                    <input ref="tripStart" placeholder="ex.02022018" type="number" maxLength='8'/>
+                    <input ref="tripStart" placeholder="ex.02022018" type="date" />
                     <br />
                     <h4>Trip End Date</h4>
-                    <input ref="tripEnd" placeholder="ex.02022018" type="number" maxLength='8' />
+                    <input ref="tripEnd" placeholder="ex.02022018" type="date" />
                     <br />
                     <br/>
-                    <button>Cancel</button><button onClick={() =>this.saveTrip()}>Save</button>
+                    <button>Cancel</button><button onClick={() =>this.tripInfo()}>Save</button>
                     <br />
                     <br />
                 </div>

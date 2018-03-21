@@ -68,9 +68,9 @@ passport.serializeUser((id, done) => {
 })
 
 passport.deserializeUser((id, done) => {
-    console.log('deserialize' + id)
+    // console.log('deserialize' + id)
     app.get('db').find_user([id]).then(res => {
-        console.log(res)
+        // console.log(res)
         return done(null, res[0])
     })
 })
@@ -80,14 +80,21 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard',
     failureRedirect: 'http://localhost:3000/'
 }))
-app.get('/api/list', invited.read)
 
+app.get('/api/list', invited.read)
+app.get('/api/tripList/:userid', (req, res) =>{
+    const db = app.get('db')
+    const userid = req.params.userid;
+    db.trip_list([userid]).then(trips => res.send(trips))
+    .catch(err => res.status(500))
+})
 app.post('/api/login', auth.login)
 app.post('/api/register', auth.register)
 app.post('/api/signout', auth.signout)
 app.get('/api/user', auth.getUser)
 app.put('/api/profile', auth.updateUser)
-app.put('/api/trips', auth.updateTrips)
+app.post('/api/newTrip', auth.newTrip)
+
 
 
 

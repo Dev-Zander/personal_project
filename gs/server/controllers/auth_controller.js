@@ -35,7 +35,7 @@ module.exports = {
   },
 
   getUser: ( req, res, next ) => {
-    console.log(req.user)
+    // console.log(req.user)
     const { session } = req;
     res.status(200).send( req.user );
   },
@@ -45,17 +45,34 @@ module.exports = {
     db.users.update({id: req.user.id} , req.body, (err, user) => {
 
     }).then( response => {
-      console.log(response)
+      // console.log(response)
       res.status(200).send('true')
-    }).catch( err => res.status(500).send('Too bad'))
+    }).catch( err => res.status(500).send('Success'))
     },
 
-    updateTrips: (req, res) =>{
+    newTrip:(req, res) => {
       const db = req.app.get('db')
-      db.trips.update({id: req.trips.id}, req.body, (err, id) => {
+      let currentUser = req.user.id
+      // let body = req.body
+      console.log('current user', currentUser)
+      Object.assign(req.body, {created_by_id: currentUser})
+
+      db.trips.save(req.body, (err, obj) => {
+
       }).then( response => {
-        res.status(200).send('Trip Updated')
-      }).catch( err=> res.status(500).send('No Trip Added'))
+        res.status(200).send('Success')
+      })
+    },
+
+    tripList: (req, res) => {
+      const id = req.params.userid
+      console.log(id)
+      console.log(req)
+      const db = req.app.get('db')
+      db.trip_list([id]).then(
+        trips => res.send(trips)
+      )
     }
+    
 };
 
