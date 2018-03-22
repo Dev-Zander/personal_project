@@ -31,11 +31,10 @@ module.exports = {
   signout: ( req, res, next ) => {
     const { session } = req;
     session.destroy();
-    res.status(200).send( req.session );
+    res.redirect('https://black-panther.auth0.com/v2/logout?returnTo=http://localhost:3000')
   },
 
   getUser: ( req, res, next ) => {
-    // console.log(req.user)
     const { session } = req;
     res.status(200).send( req.user );
   },
@@ -45,15 +44,22 @@ module.exports = {
     db.users.update({id: req.user.id} , req.body, (err, user) => {
 
     }).then( response => {
-      // console.log(response)
       res.status(200).send('true')
-    }).catch( err => res.status(500).send('Success'))
+    }).catch( err => res.status(500).send('Failed'))
+    },
+
+    inviteTraveler: (req, res) => {
+      const db = req.app.get('db')
+      db.travelers.update({id: req.user.id}, req.body, (err, user) => {
+
+      }).then( response => {
+        res.status(200).send('true')
+      }).catch( err => res.status(500).send('Faiiled'))
     },
 
     newTrip:(req, res) => {
       const db = req.app.get('db')
       let currentUser = req.user.id
-      // let body = req.body
       console.log('current user', currentUser)
       Object.assign(req.body, {created_by_id: currentUser})
 
@@ -72,7 +78,31 @@ module.exports = {
       db.trip_list([id]).then(
         trips => res.send(trips)
       )
+    },
+    deleteTrip: (req, res) => {
+      const db = req.app.get('db')
+      const {params} = req
+      db.delete_trips([params.id])
+    .then(()=> {
+      db.trip_list([id])
+    .then(
+        trips => res.status(200).send(trips)
+      )
+      
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).send()
+    })
+    },
+
+    addTravelers: (req, res) => {
+      const db = req.app.get('db')
+      const {params} = req
+      db.invite_travelers([params.id1, params.id2])
+      .then( travelers => res.send(travelers))
+     
     }
-    
+      
 };
 

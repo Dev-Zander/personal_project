@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert'
 
 class NewTrip extends Component{
     
@@ -17,9 +18,15 @@ class NewTrip extends Component{
 
 
         axios.post('api/newTrip', newTripProps).then(
-            res => {alert('Trip added!');
+            res => {
+            swal({
+                text: "Trip Added!",
+                icon: "success",
+                button: "OK",
+              })
             
                 this.props.history.push('/dashboard')
+
             
         }
         )
@@ -54,7 +61,9 @@ class NewTrip extends Component{
                     <input ref="tripEnd" placeholder="ex.02022018" type="date" />
                     <br />
                     <br/>
-                    <button>Cancel</button><button onClick={() =>this.tripInfo()}>Save</button>
+                    <a href="/#/dashboard">
+                    <button>Cancel</button></a>
+                    <button onClick={() =>this.tripInfo()}>Save</button>
                     <br />
                     <br />
                 </div>

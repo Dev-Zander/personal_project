@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import swal from 'sweetalert';
+
 
 
 class EditProfile extends Component {
@@ -15,7 +17,12 @@ class EditProfile extends Component {
             airport_code: this.refs.airCode.value
         }
         axios.put('/api/profile', newUserProps).then( res => {
-                alert('Profile Update Successful');
+             
+                swal({
+                    text: "Profile Update Successful!",
+                    icon: "success",
+                    button: "OK",
+                  });
                 
                     this.props.history.push('/dashboard')
             

@@ -8,6 +8,7 @@ import NewTrip from './components/new_trip';
 import TravelerDetail from './components/traveler_details';
 import TripDetails from './components/trip_details';
 import UpcomingTrips from './components/upcoming_trip';
+import InvitedTrips from './components/invited_trips';
 
 export default(
     <Switch>
@@ -19,5 +20,6 @@ export default(
         <Route path='/traveler_details'component={TravelerDetail}/>
         <Route path='/trip_details'component={TripDetails}/>
         <Route path='/upcoming'component={UpcomingTrips}/>
+        <Route path='/invited_trips' component={InvitedTrips}/>
     </Switch>
 )

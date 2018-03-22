@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+// import axios from 'axios'
 
 class TravelerDetail extends Component{
+    
+
     render(){
         return(
 

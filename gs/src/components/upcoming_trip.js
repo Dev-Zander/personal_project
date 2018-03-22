@@ -1,54 +1,82 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 class UpcomingTrips extends Component {
-    constructor(props){
+
+
+
+    constructor(props) {
         super(props);
         this.state = {
-            trips:[]
+            trips: [],
+            tripID: '',
+            userID: ''
+        
         }
+
+        this.handleDeleteClick = this.handleDeleteClick.bind(this)
     }
-    
-componentWillReceiveProps(newProps){
-    if(this.props.userID !== newProps.userID){
+    handleDeleteClick(id) {
+        axios.delete(`/api/trip/${id}`).then(res => {
+            this.setState({ trips: res.data })
+        })
+
 
     }
-    let id = newProps.userID;
-    // console.log(id);
-    axios.get(`/api/tripList/${id}`).then( res => {
-        console.log(res.data)
-        let newTrips = res.data
-        this.setState({
-            trips: newTrips
+    handleInviteClick(id1, id2){
+        axios.post(`/api/travelers/${id1}/${id2}`).then(res => {
+            this.setState({
+                tripID: {id1},
+                userID: {id2}
+            })
+    
+            
         })
-    })
-}
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (this.props.userID !== newProps.userID) {
+
+            var id = newProps.userID;
+        }
+
+        axios.get(`/api/tripList/${id}`).then(res => {
+
+            let newTrips = res.data
+            this.setState({
+                trips: newTrips
+            })
+        })
+    }
 
 
     render() {
-       let trips = this.state.trips
+    
+        var trips = this.state.trips
 
-       const displytrips = trips.map((trip, index) =>{
+        const displytrips = trips.map((trip, index) => {
+
+
+            return (
+                <div key={index}>
+
+                    <div><button onClick={()=>this.handleInviteClick(trip.id,trip.created_by_id)}>Invite Travelers</button><button onClick={() => this.handleDeleteClick(trip.id)}>Delete Trip</button> Trip Name:{trip.trip_name} Trip Location:{trip.trip_location}  Trip Start:{trip.trip_start}  Trip End:{trip.trip_end}</div>
+                </div>
+            )
+        })
         return (
-        <li key={index}>
-            {trip.trip_start}
-            {trip.trip_end}
-            {trip.trip_name}
-            {trip.trip_location}
-        </li>
-       )})
-        return (
 
-            <div>I am the Upcoming Trips!<br /><br />
-              
-              <br/>
+            <div><h4>Here are your upcoming trips!</h4><br /><br />
+
+                <br />
+
+                <ul>
+                    {displytrips}
+                    
 
 
-           <ul>
-         {displytrips}
-
-              
-           </ul>
+                </ul>
 
             </div>
 
@@ -58,4 +86,4 @@ componentWillReceiveProps(newProps){
 
 }
 
-export default UpcomingTrips
+export default (UpcomingTrips)

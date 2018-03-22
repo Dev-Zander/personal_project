@@ -7,7 +7,7 @@ class Home extends Component {
 <div>
             <a href="http://localhost:3210/auth"><button>SIGN IN</button></a>
             <br/>
-            <a href="https://black-panther.auth0.com/v2/logout"><button>LOG OUT</button></a>
+            <a href='http://localhost:3210/api/signout'><button>LOG OUT</button></a>
 </div>
         )
     }

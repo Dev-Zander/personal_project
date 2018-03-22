@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import UpcomingTrips from './upcoming_trip'
+import InvitedTrips from './invited_trips'
 
 
 class Dashboard extends Component {
+        tracker = (userid,tripid) => {
+                []
+        }
+
         constructor(props) {
                 super(props)
                 this.state = {
-                        userid:''
+                        userid:'',
+                        username:''
                 }
         }
 
@@ -18,9 +24,10 @@ class Dashboard extends Component {
                                 this.props.history.push('/edit_profile')
                         }
                         let newUserID = res.data.id
+                        let firstname = res.data.first_name
                         this.setState({
-                                userid:newUserID
-                                
+                                userid:newUserID,
+                                username: firstname
                         })
                      
                 })
@@ -34,7 +41,7 @@ class Dashboard extends Component {
 
 
                         <div>
-                                <h1>YOU ARE ON YOUR DASHBOARD!</h1>
+                                <h1>Welcome to your Dashboard {this.state.username}</h1>
                                 <Link to='/edit_profile' className='buttons'> <button>Edit Profile</button></Link>
                                 <br />
                                 <br />
@@ -45,6 +52,10 @@ class Dashboard extends Component {
                                 <br />
                                 <br />
                                 <UpcomingTrips userID = {this.state.userid}/>
+
+                                <InvitedTrips/>
+
+                                
 
 
 

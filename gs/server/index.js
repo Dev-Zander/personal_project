@@ -88,12 +88,15 @@ app.get('/api/tripList/:userid', (req, res) =>{
     db.trip_list([userid]).then(trips => res.send(trips))
     .catch(err => res.status(500))
 })
+app.post('/api/travelers/:id1/:id2', auth.addTravelers)
 app.post('/api/login', auth.login)
 app.post('/api/register', auth.register)
-app.post('/api/signout', auth.signout)
+app.get('/api/signout', auth.signout)
 app.get('/api/user', auth.getUser)
 app.put('/api/profile', auth.updateUser)
 app.post('/api/newTrip', auth.newTrip)
+app.delete('/api/trip/:id', auth.deleteTrip)
+app.post('/api/invite', auth.inviteTraveler)
 
 
 
