@@ -31,7 +31,7 @@ module.exports = {
   signout: ( req, res, next ) => {
     const { session } = req;
     session.destroy();
-    res.redirect('https://black-panther.auth0.com/v2/logout?returnTo=http://localhost:3000')
+    res.redirect(`https://black-panther.auth0.com/v2/logout?returnTo=${process.env.HOMEPAGE}`)
   },
 
   getUser: ( req, res, next ) => {

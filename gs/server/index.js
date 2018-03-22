@@ -28,6 +28,8 @@ massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
 })
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(session({
@@ -77,8 +79,8 @@ passport.deserializeUser((id, done) => {
 
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/dashboard',
-    failureRedirect: 'http://localhost:3000/'
+    successRedirect: `${process.env.HOMEPAGE}/#/dashboard`,
+    failureRedirect: `${process.env.HOMEPAGE}`
 }))
 
 app.get('/api/list', invited.read)

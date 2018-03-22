@@ -5,9 +5,9 @@ class Home extends Component {
        
         return (
 <div>
-            <a href="http://localhost:3210/auth"><button>SIGN IN</button></a>
+            <a href={process.env.REACT_APP_LOGIN}><button>SIGN IN</button></a>
             <br/>
-            <a href='http://localhost:3210/api/signout'><button>LOG OUT</button></a>
+            <a href={process.env.REACT_APP_LOGOUT}><button>LOG OUT</button></a>
 </div>
         )
     }
