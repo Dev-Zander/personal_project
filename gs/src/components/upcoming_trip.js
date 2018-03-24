@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 class UpcomingTrips extends Component {
-
-
-
     constructor(props) {
         super(props);
         this.state = {
             trips: [],
+            myTrips:[],
             tripID: '',
             userID: ''
-        
+
         }
 
         this.handleDeleteClick = this.handleDeleteClick.bind(this)
@@ -24,14 +22,15 @@ class UpcomingTrips extends Component {
 
 
     }
-    handleInviteClick(id1, id2){
-        axios.post(`/api/travelers/${id1}/${id2}`).then(res => {
+    handleInviteClick(id1, id2) {
+        axios.post(`/api/travelers/${id1}/${id2}`)
+        .then(res => {
             this.setState({
-                tripID: {id1},
-                userID: {id2}
+                tripID: { id1 },
+                userID: { id2 }
             })
-    
-            
+
+
         })
     }
 
@@ -48,21 +47,43 @@ class UpcomingTrips extends Component {
                 trips: newTrips
             })
         })
+
+        axios.get(`/api/createdtriplist/${id}`)
+        .then(res =>{
+            let createdTrips = res.data
+            console.log(res.data,)
+            this.setState({
+                myTrips: createdTrips
+            })
+        })
     }
 
 
     render() {
-    
+
         var trips = this.state.trips
+        var createdtrip  = this.state.myTrips
 
-        const displytrips = trips.map((trip, index) => {
-
-
+        const displaycreatedTrips = createdtrip.map((trip, index) => {
+            
             return (
                 <div key={index}>
 
-                    <div><button onClick={()=>this.handleInviteClick(trip.id,trip.created_by_id)}>Invite Travelers</button><button onClick={() => this.handleDeleteClick(trip.id)}>Delete Trip</button> Trip Name:{trip.trip_name} Trip Location:{trip.trip_location}  Trip Start:{trip.trip_start}  Trip End:{trip.trip_end}</div>
+                    <div><Link to={`/invite/${trip.id}`}><button>Invite Travelers</button></Link><button onClick={() => this.handleDeleteClick(trip.id)}>Delete Trip</button> Trip Name:{trip.trip_name} Trip Location:{trip.trip_location}  Trip Start:{trip.trip_start}  Trip End:{trip.trip_end}</div>
                 </div>
+                
+
+            )
+        })
+        const displytrips = trips.map((trip, index) => {
+            
+            return (
+                <div key={index}>
+
+                    <div><Link to={`/invite/${trip.id}`}><button>Invite Travelers</button></Link><button onClick={() => this.handleDeleteClick(trip.id)}>Delete Trip</button> Trip Name:{trip.trip_name} Trip Location:{trip.trip_location}  Trip Start:{trip.trip_start}  Trip End:{trip.trip_end}</div>
+                </div>
+                
+
             )
         })
         return (
@@ -73,7 +94,8 @@ class UpcomingTrips extends Component {
 
                 <ul>
                     {displytrips}
-                    
+                    {displaycreatedTrips}
+
 
 
                 </ul>

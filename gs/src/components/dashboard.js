@@ -5,31 +5,40 @@ import UpcomingTrips from './upcoming_trip'
 import InvitedTrips from './invited_trips'
 
 
+
 class Dashboard extends Component {
-        tracker = (userid,tripid) => {
-                []
-        }
+        
+        
 
         constructor(props) {
                 super(props)
                 this.state = {
                         userid:'',
-                        username:''
+                        username:'',
+                        phonenumber:''
                 }
+               
+                
         }
 
-        componentDidMount() {
+        componentWillMount() {
                 axios.get('/api/user').then((res) => {
                         if (!res.data.phone_number) {
                                 this.props.history.push('/edit_profile')
                         }
                         let newUserID = res.data.id
                         let firstname = res.data.first_name
+                        let userPhone = res.data.phone_number
+
+
                         this.setState({
+
                                 userid:newUserID,
-                                username: firstname
+                                username: firstname,
+                                phonenumber: userPhone
+
                         })
-                     
+                    
                 })
         }
 
@@ -52,8 +61,8 @@ class Dashboard extends Component {
                                 <br />
                                 <br />
                                 <UpcomingTrips userID = {this.state.userid}/>
-
-                                <InvitedTrips/>
+                               
+                                <InvitedTrips userPhone = {this.state.phonenumber} userID = {this.state.userid} />
 
                                 
 

@@ -15,10 +15,10 @@ export default(
         <Route path='/'component={Home}exact/>
         <Route path='/dashboard'component={Dashboard}/>
         <Route path='/edit_profile'component={EditProfile}/>
-        <Route path='/invite'component={InviteTraveler}/>
+        <Route path='/invite/:id'component={InviteTraveler}/>
         <Route path='/new_trip'component={NewTrip}/>
         <Route path='/traveler_details'component={TravelerDetail}/>
-        <Route path='/trip_details'component={TripDetails}/>
+        <Route path='/trip_details/:id'component={TripDetails}/>
         <Route path='/upcoming'component={UpcomingTrips}/>
         <Route path='/invited_trips' component={InvitedTrips}/>
     </Switch>

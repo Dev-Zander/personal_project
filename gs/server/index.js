@@ -11,7 +11,6 @@ const auth = require('./controllers/auth_controller')
 const cors = require('cors');
 
 
-
 const {
     SERVER_PORT,
     SESSION_SECRET,
@@ -77,12 +76,14 @@ passport.deserializeUser((id, done) => {
     })
 })
 
+app.get('/api/createdtriplist/:id', auth.createdTripslist)
+app.get('/api/trip_info/:id',auth.getTripDetails)
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: `${process.env.HOMEPAGE}#/dashboard`,
     failureRedirect: `${process.env.HOMEPAGE}`
 }))
-
+app.get('/api/invitedtrips/:id1', auth.invitedTrips)
 app.get('/api/list', invited.read)
 app.get('/api/tripList/:userid', (req, res) =>{
     const db = app.get('db')
@@ -93,6 +94,7 @@ app.get('/api/tripList/:userid', (req, res) =>{
 app.post('/api/travelers/:id1/:id2', auth.addTravelers)
 app.post('/api/login', auth.login)
 app.post('/api/register', auth.register)
+app.put('/api/addtotrip', auth.joinTrip)
 app.get('/api/signout', auth.signout)
 app.get('/api/user', auth.getUser)
 app.put('/api/profile', auth.updateUser)

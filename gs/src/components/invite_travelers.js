@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import swal from 'sweetalert';
 
-class Invite extends Component {
+class InviteTravelers extends Component {
 
 
     inviteUser = () => {
-        var userPhone = {
-            phone_number: this.refs.phoneNumber.value
+        var inviteInfo = {
+            phone_number: this.refs.phoneNumber.value,
+            trip_id: this.props.match.params.id
         }
-
-        axios.put('/api/invite', userPhone).then( res =>{
+        axios.post('/api/invite', inviteInfo).then( res =>{
 
             swal({
                 text: "Invitation Sent!",
@@ -24,6 +24,7 @@ class Invite extends Component {
     
 
     render(){
+        console.log(this.props.match.params.id)
         return(
 
             <div>
@@ -38,7 +39,7 @@ class Invite extends Component {
             <h3>Input The Phone Number for Your Invitee</h3>
 
             <div className='invite_list'>
-            <input ref="phoneNumber" placeholder="Numbers Only" type="tel"/>
+            <input ref="phoneNumber" placeholder="Numbers Only" type="number"/>
             <button>Cancel</button><button onClick={()=> this.inviteUser()}>Invite</button>
             <br/>
             <br/>
@@ -55,4 +56,4 @@ class Invite extends Component {
 
 
 
-export default Invite
+export default InviteTravelers
