@@ -1,0 +1,29 @@
+.home {
+  display: flex;
+  background-image: url(../media/homeimage.jpg);
+  background-size: 100% 683;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  background-color: black;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  }
+
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 7px;
+  }
+
+
+
+
+  
+  

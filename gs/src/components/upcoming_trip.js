@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import swal from 'sweetalert'
 
 class UpcomingTrips extends Component {
     constructor(props) {
@@ -18,8 +19,21 @@ class UpcomingTrips extends Component {
     handleDeleteClick(id) {
         axios.delete(`/api/trip/${id}`).then(res => {
             this.setState({ trips: res.data })
-        })
+        }).then(
+            res => {
+            swal({
+                text: "Trip Deleted!",
+                icon: "success",
+                button: "OK",
+              })
+            
+              
 
+            
+        }
+    )
+    this.setState({})
+         
 
     }
     handleInviteClick(id1, id2) {
@@ -51,7 +65,7 @@ class UpcomingTrips extends Component {
         axios.get(`/api/createdtriplist/${id}`)
         .then(res =>{
             let createdTrips = res.data
-            console.log(res.data,)
+        
             this.setState({
                 myTrips: createdTrips
             })

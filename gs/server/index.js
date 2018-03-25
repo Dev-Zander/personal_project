@@ -60,7 +60,7 @@ passport.use(new Auth0Strategy({
                 return done(null, users[0].auth_id)
             }
         })
-        .catch(console.log)
+        
     }
 ))
 
@@ -69,9 +69,9 @@ passport.serializeUser((id, done) => {
 })
 
 passport.deserializeUser((id, done) => {
-    // console.log('deserialize' + id)
+    
     app.get('db').find_user([id]).then(res => {
-        // console.log(res)
+        
         return done(null, res[0])
     })
 })
@@ -95,6 +95,7 @@ app.post('/api/travelers/:id1/:id2', auth.addTravelers)
 app.post('/api/login', auth.login)
 app.post('/api/register', auth.register)
 app.put('/api/addtotrip', auth.joinTrip)
+app.put('/api/rejecttrip',auth.rejectTrip)
 app.get('/api/signout', auth.signout)
 app.get('/api/user', auth.getUser)
 app.put('/api/profile', auth.updateUser)

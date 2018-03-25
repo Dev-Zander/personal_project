@@ -64,6 +64,12 @@ module.exports = {
       res.status(200).send("It worked!");
     });
   },
+  rejectTrip: (req, res) => {
+  const db = req.app.get('db')
+  db.reject_trip([req.body.trip_id,req.user.phone_number]).then(response => {
+      res.status(200).send("It worked!");
+    });
+  },
 
   getTripDetails: (req, res) => {
     const db = req.app.get('db')

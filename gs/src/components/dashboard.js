@@ -3,22 +3,24 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import UpcomingTrips from './upcoming_trip'
 import InvitedTrips from './invited_trips'
+import '../styles/dashboard.css'
+
 
 
 
 class Dashboard extends Component {
-        
-        
+
+
 
         constructor(props) {
                 super(props)
                 this.state = {
-                        userid:'',
-                        username:'',
-                        phonenumber:''
+                        userid: '',
+                        username: '',
+                        phonenumber: ''
                 }
-               
-                
+
+
         }
 
         componentWillMount() {
@@ -33,38 +35,45 @@ class Dashboard extends Component {
 
                         this.setState({
 
-                                userid:newUserID,
+                                userid: newUserID,
                                 username: firstname,
                                 phonenumber: userPhone
 
                         })
-                    
+
                 })
         }
 
 
 
         render() {
-               
+
                 return (
 
 
-                        <div>
-                                <h1>Welcome to your Dashboard {this.state.username}</h1>
-                                <Link to='/edit_profile' className='buttons'> <button>Edit Profile</button></Link>
-                                <br />
-                                <br />
-                                <Link to='/new_trip' className='buttons'> <button>Create New Trip</button></Link>
 
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <UpcomingTrips userID = {this.state.userid}/>
-                               
-                                <InvitedTrips userPhone = {this.state.phonenumber} userID = {this.state.userid} />
+                        <div classname="list">
+                                <div class="col span_1_of_4">
+                                        <h1>Welcome to your Dashboard {this.state.username}</h1>
+                                </div>
+                                <div class="col span_2_of_4">
+                                        <a href={process.env.REACT_APP_LOGOUT}><button>LOG OUT</button></a>
+                                        <Link to='/edit_profile' className='buttons'> <button>Edit Profile</button></Link>
+                                        <br />
+                                        <br />
+                                        <Link to='/new_trip' className='buttons'> <button>Create New Trip</button></Link>
+                                </div>
+                                <div class="col span_3_of_4">
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <UpcomingTrips userID={this.state.userid} />
+                                </div>
+                                <div class="col span_4_of_4">
+                                        <InvitedTrips userPhone={this.state.phonenumber} userID={this.state.userid} />
+                                </div>
 
-                                
 
 
 

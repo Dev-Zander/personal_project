@@ -23,7 +23,6 @@ class TravelerDetail extends Component {
        
         axios.get(`/api/trip_info/${trip}`)
         .then( res =>{
-            console.log(res.data)
             var tripId = res.data[0].id
             let name = res.data[0].trip_name
             let location = res.data[0].trip_location
@@ -46,7 +45,6 @@ class TravelerDetail extends Component {
 
         axios.put('/api/addtotrip',confirmTrip)
         .then( res => {
-            console.log(res);
                          
             swal({
                 text: "You have joined the trip!",
@@ -63,7 +61,26 @@ class TravelerDetail extends Component {
     }
 
     rejectTrip = () => {
+        
+        var rejectTrip = {
+            trip_id: this.state.id,
+            traveler_id: null,
+            phone_number: null,
 
+            
+        }
+
+        axios.put('/api/rejecttrip',rejectTrip)
+        .then( res => {
+                         
+            swal({
+                text: "You have Rejected the trip!",
+                icon: "success",
+                button: "OK",
+              });
+            
+                this.props.history.push('/dashboard')
+        })
 
     }
 

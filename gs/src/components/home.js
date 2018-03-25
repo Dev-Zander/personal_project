@@ -1,14 +1,25 @@
+import '../styles/home.css'
 import React, { Component } from 'react';
+import RaisedButton from 'material-ui/RaisedButton'
+import '../media/homeimage.jpg'
 
 class Home extends Component {
     render() {
-       
+
         return (
-<div>
-            <a href={process.env.REACT_APP_LOGIN}><button>SIGN IN</button></a>
-            <br/>
-            <a href={process.env.REACT_APP_LOGOUT}><button>LOG OUT</button></a>
-</div>
+
+            <div className="home">
+
+
+            
+                   <div className="buttons"><RaisedButton  href={process.env.REACT_APP_LOGIN} label="LOGIN" primary={true} /></div>
+
+                    
+
+                    <div className="buttons"><RaisedButton  href={process.env.REACT_APP_LOGOUT} label="LOGOUT" primary={false} />
+                    </div> 
+            
+            </div>
         )
     }
 

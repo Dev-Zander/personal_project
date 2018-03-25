@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert'
 
+
 class NewTrip extends Component{
-    
-
-
+   
 
     tripInfo = () => {
         var newTripProps = {
@@ -52,7 +51,7 @@ class NewTrip extends Component{
                     <input ref="tripName" placeholder="Trip Name" type="text" />
                     <br />
                     <h4>Trip Location</h4>
-                    <input ref="tripLocation" placeholder="Trip Location" type="text" />
+                    <input id="search_type" ref="tripLocation" placeholder="Trip Location" type="text" />
                     <br />
                     <h4>Trip Start Date</h4>
                     <input ref="tripStart" placeholder="ex.02022018" type="date" />
@@ -64,14 +63,16 @@ class NewTrip extends Component{
                     <a href="/#/dashboard">
                     <button>Cancel</button></a>
                     <button onClick={() =>this.tripInfo()}>Save</button>
+      
                     <br />
                     <br />
                 </div>
 
             </div>
         )
-        }
-    
+      
+        
+    }
 }
 
 export default NewTrip

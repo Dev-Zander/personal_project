@@ -24,7 +24,7 @@ class InviteTravelers extends Component {
     
 
     render(){
-        console.log(this.props.match.params.id)
+        
         return(
 
             <div>
@@ -39,8 +39,12 @@ class InviteTravelers extends Component {
             <h3>Input The Phone Number for Your Invitee</h3>
 
             <div className='invite_list'>
-            <input ref="phoneNumber" placeholder="Numbers Only" type="number"/>
-            <button>Cancel</button><button onClick={()=> this.inviteUser()}>Invite</button>
+            <input ref="phoneNumber" placeholder="Numbers Only" type="number" pattern="0-9"/>
+            <br/>
+            <br/>
+            <button onClick={()=> this.inviteUser()}>Submit</button>
+            <Link to='/dashboard' className='buttons'>
+            <button>Done</button></Link><button>Cancel</button>
             <br/>
             <br/>
             

@@ -37,7 +37,6 @@ class InvitedTrips extends Component {
         var trips = this.state.invitedTrips
 
         const displaytrips = trips.map((trip, index) => {
-            console.log(trips, 'Trips', trip, 'trip')
             return (
                 <div key={index}>
 
