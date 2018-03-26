@@ -43,7 +43,7 @@ render() {
             <Link to='/dashboard' className='buttons'> <button>Dashboard</button></Link>
             <br />
             <br />
-
+            <a href={process.env.REACT_APP_LOGOUT}><button>LOG OUT</button></a>
             <h3>Please complete your profile.</h3>
 
             <div className='edit_profile'>

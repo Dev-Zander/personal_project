@@ -1,4 +1,4 @@
-import '../styles/home.css'
+import '../styles/style.css'
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton'
 import '../media/homeimage.jpg'
@@ -10,14 +10,22 @@ class Home extends Component {
 
             <div className="home">
 
-
             
-                   <div className="buttons"><RaisedButton  href={process.env.REACT_APP_LOGIN} label="LOGIN" primary={true} /></div>
+      <div class="banner">
+        
+          <span class="title">Go SomeWhere</span>
+    
+      </div>
+    
+
+<section id="buttons">
+            
+                   <div className="button"><RaisedButton  href={process.env.REACT_APP_LOGIN} label="SIGN IN" primary={true} /></div>
 
                     
 
-                    <div className="buttons"><RaisedButton  href={process.env.REACT_APP_LOGOUT} label="LOGOUT" primary={false} />
-                    </div> 
+                    
+                    </section>
             
             </div>
         )

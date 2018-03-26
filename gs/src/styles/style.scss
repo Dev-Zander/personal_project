@@ -1,0 +1,82 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+@import url('https://cdn.linearicons.com/free/1.0.0/icon-font.min.css');
+
+.home {
+    display: flex;
+    background-image: url(../media/homeimage.jpg);
+    background-size: 100% 683;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    background-color: black;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    }
+
+.buttons{
+        display: flex;
+        float: left;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 7px;
+      }
+.title{
+    text-align: left;
+    float: left;
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    width: px;
+    height: 120px;
+    font-family: $titlefont;
+    font-size: 37px;
+}
+.list{
+
+    height: 100vh;
+    width: 100%;
+    background-image: url(../media/blur12.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+    .span_1_of_4{
+        display:flex;
+        align-items: center;
+        font-size:10px;
+        height:5%;
+        align-content: center;
+        text-align: center;
+        color: white;
+        background-image: url(../media/blur05.jpg);
+        
+
+
+    
+    }
+    .span_2_of_4{
+        display: flex;
+        float: left;
+        flex-direction: row;
+        flex-wrap:wrap;
+        align-items: center;
+        align-content: center;
+        padding: 1px;
+        background-color:black;
+        height: 50px;
+        width: 100vw;
+        justify-content:space-evenly;
+    
+
+    }
+
+

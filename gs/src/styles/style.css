@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css?family=Special+Elite");
+@import url("https://cdn.linearicons.com/free/1.0.0/icon-font.min.css");
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: url(../media/homeimage.jpg);
+  background-size: 100% 683;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  background-color: black;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  padding: 7px; }
+
+.title {
+  text-align: left;
+  float: left;
+  position: absolute;
+  left: 5%;
+  top: 15%;
+  width: px;
+  height: 120px;
+  font-family: "Special Elite", cursive;
+  font-size: 37px; }
+
+.list {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../media/blur12.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.span_1_of_4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 10px;
+  height: 5%;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  text-align: center;
+  color: white;
+  background-image: url(../media/blur05.jpg); }
+
+.span_2_of_4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  padding: 1px;
+  background-color: black;
+  height: 50px;
+  width: 100vw;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly; }
