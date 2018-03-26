@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import '../styles/reset.css'
+import '../styles/style.css'
+import RaisedButton from 'material-ui/RaisedButton';
 
 class InvitedTrips extends Component {
     constructor(props) {
@@ -38,14 +41,24 @@ class InvitedTrips extends Component {
 
         const displaytrips = trips.map((trip, index) => {
             return (
+
+                <div className="myButtons">
+
+<div className='invtied_Results'>
+
+                {trip.trip_location}<br/>{trip.trip_start}
+            
+            
+</div>
                 <div key={index}>
+     <div key={index}> <Link to={`/trip_details/${trip.id}`}><RaisedButton label="TRIP DETAILS" primary={true} /></Link> </div>  
+    
+    
+  
+                        
+                    </div></div>
 
-                    <div><Link to={`/trip_details/${trip.id}`}><button>Trip Details</button></Link>{trip.trip_name}
-                        {trip.trip_location}
-                        {trip.trip_start}
-                    </div>
-
-                </div>
+                
             )
         })
 

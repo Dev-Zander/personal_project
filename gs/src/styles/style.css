@@ -79,13 +79,14 @@
   align-content: center;
   text-align: center;
   color: white;
+  margin: auto;
   background-image: url(../media/blur05.jpg); }
 
 .span_2_of_4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  float: left;
+  float: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -99,8 +100,82 @@
   align-content: center;
   padding: 1px;
   background-color: black;
-  height: 50px;
+  height: 5.4%;
   width: 100vw;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly; }
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
+
+.span_3_of_4 {
+  padding: 2px;
+  height: 50%;
+  width: 100vw;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  text-align: center; }
+  .span_3_of_4 .h4 {
+    text-align: center; }
+  .span_3_of_4 .heading {
+    font-size: 18px;
+    color: blue;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    font-weight: 100%; }
+  .span_3_of_4 .li {
+    font-size: 15px;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .span_3_of_4 .Results {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center; }
+  .span_3_of_4 .myButtons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+
+.span_4_of_4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  padding: 7px; }
+
+.ul {
+  padding: 0;
+  -webkit-padding-start: 0; }
+
+.h1_sp1 {
+  text-align: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: auto; }

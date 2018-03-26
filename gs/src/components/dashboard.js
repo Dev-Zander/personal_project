@@ -55,7 +55,7 @@ class Dashboard extends Component {
 
                         <div className="list">
                                 <div className="span_1_of_4">
-                                        <h1>Welcome to your Dashboard {this.state.username}</h1>
+                                        <h1 className="h1_sp1">Welcome to your Dashboard {this.state.username}</h1>
                                 </div>
                                 <div className="span_2_of_4">
                                 <RaisedButton a href={process.env.REACT_APP_LOGOUT} label="Log Off" primary={true} />
@@ -67,9 +67,6 @@ class Dashboard extends Component {
                                          
                                 </div>
                                 <div className="span_3_of_4">
-                                        <br />
-                                        <br />
-                                        <br />
                                         <br />
                                         <UpcomingTrips userID={this.state.userid} />
                                 </div>

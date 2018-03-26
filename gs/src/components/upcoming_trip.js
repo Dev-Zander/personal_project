@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import swal from 'sweetalert'
+import '../styles/reset.css'
+import '../styles/style.css'
+import RaisedButton from 'material-ui/RaisedButton';
 
 class UpcomingTrips extends Component {
     constructor(props) {
@@ -81,11 +84,43 @@ class UpcomingTrips extends Component {
         const displaycreatedTrips = createdtrip.map((trip, index) => {
             
             return (
-                <div key={index}>
-
-                    <div><Link to={`/invite/${trip.id}`}><button>Invite Travelers</button></Link><button onClick={() => this.handleDeleteClick(trip.id)}>Delete Trip</button> Trip Name:{trip.trip_name} Trip Location:{trip.trip_location}  Trip Start:{trip.trip_start}  Trip End:{trip.trip_end}</div>
-                </div>
                 
+                
+               
+
+                    <div className="upcoming_trips"> 
+                    
+                
+                   <section id="trip_list">
+                   <ul className="ul">
+
+                    <div className='Results'>
+                    <div className="heading"> Trip Name:  </div>
+                    <li className="li">{trip.trip_name}</li> </div>
+                   
+<div className='Results'>
+                    <div className="heading"> Trip Location:  </div>
+                    <li className="li">
+                     {  trip.trip_location}</li> 
+                    </div>      
+<div className='Results'>                    
+                    <div className="heading"> Trip Start:</div>
+                    <li className="li">{trip.trip_start}</li> 
+                    </div>      
+ <div className='Results'>                   
+                    <div className="heading"> Trip End:  </div>
+                    <li className="li">{trip.trip_end}</li> 
+   </div>                 
+                    </ul>
+                    </section>
+                    
+                    
+                    <div className="myButtons">
+                    <div key={index}> <Link to={`/invite/${trip.id}`}><RaisedButton label="SEND INVITE" primary={true} /></Link> </div>  
+
+                    
+                    <RaisedButton style={{margin:5}} onClick={() => this.handleDeleteClick(trip.id)} label="DELETE TRIP" />
+                </div></div>
 
             )
         })
@@ -102,9 +137,7 @@ class UpcomingTrips extends Component {
         })
         return (
 
-            <div><h4>Here are your upcoming trips!</h4><br /><br />
-
-                <br />
+            <div><h4 className="h4">Here are your upcoming trips!</h4>
 
                 <ul>
                     {displytrips}

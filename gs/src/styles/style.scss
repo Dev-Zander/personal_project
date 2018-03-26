@@ -57,26 +57,90 @@
         align-content: center;
         text-align: center;
         color: white;
+        margin: auto;
         background-image: url(../media/blur05.jpg);
         
-
-
+}
     
-    }
     .span_2_of_4{
         display: flex;
-        float: left;
+        float: center;
         flex-direction: row;
         flex-wrap:wrap;
         align-items: center;
         align-content: center;
         padding: 1px;
         background-color:black;
-        height: 50px;
+        height: 5.4%;
         width: 100vw;
-        justify-content:space-evenly;
+        justify-content:space-around;
     
 
     }
+.span_3_of_4{ 
+    .h4{
+        text-align: center;
+    }     
+    padding: 2px;
+    height: 50%;
+    width: 100vw;
+    justify-content:space-around;
+    flex-direction: row;
+    text-align: center;
+
+    .heading{
+        font-size: 18px;
+        color: blue;
+        align-content: center;
+        font-weight: 100%;
+    }
+    .li{
+        font-size: 15px;
+        align-content: center;
+        align-items: center;
+
+    }
+    .Results{
+        display: flex;
+      
+        align-items: center;
+        align-content: center;
+
+    }
+
+  
+    
+    .myButtons{
+        display: flex;
+        align-items: center;
+    }
+
+    
+
+}
+.span_4_of_4{
+        display: flex;
+        float: left;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 7px;
+}
+
+
+.ul{
+    padding: 0;
+    -webkit-padding-start: 0;
+}
+.h1_sp1{
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+
+
 
 
