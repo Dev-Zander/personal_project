@@ -1,3 +1,4 @@
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const users = require('../temp/users');
 let id = 1;
 
@@ -82,11 +83,14 @@ module.exports = {
     const db = req.app.get('db')
     let currentUser = req.user.id
     Object.assign(req.body, { created_by_id: currentUser })
-
+    console.log(req.body)
     db.trips.save(req.body, (err, obj) => {
+
 
     }).then(response => {
       res.status(200).send('Success')
+    }).catch((err) => {
+      res.status(500).send()
     })
   },
 
@@ -135,6 +139,20 @@ module.exports = {
     db.invite_travelers([params.id1, params.id2])
       .then(travelers => res.send(travelers))
 
+  },
+  stripe: (req, res) =>{
+    const amountArray = req.body.amount.toString().split('');
+    const charge = stripe.charges.create(
+      {
+        currency: 'usd',
+        source: req.body.token.id,
+        description: 'Stripe Checkout test charge'
+      },
+      function(err, charge){
+        if(err) return res.sendStatus(500)
+        else return res.status(200).send(charge)
+      }
+    )
   }
 
 };

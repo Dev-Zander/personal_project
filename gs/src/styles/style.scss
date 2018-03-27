@@ -48,6 +48,17 @@
     align-items: center;
     justify-content: center;
 }
+.list1{
+
+    height: 100vh;
+    width: 100%;
+    background-image: url(../media/blur12.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
 
     .span_1_of_4{
         display:flex;
@@ -93,11 +104,21 @@
         color: blue;
         align-content: center;
         font-weight: 100%;
+
     }
     .li{
         font-size: 15px;
         align-content: center;
         align-items: center;
+
+    }
+    .Results1{
+        display: flex;
+      
+        align-items: center;
+        align-content: center;
+        
+      
 
     }
     .Results{
@@ -107,7 +128,6 @@
         align-content: center;
 
     }
-
   
     
     .myButtons{
@@ -115,6 +135,20 @@
         align-items: center;
     }
 
+    .myButtons2{
+        display: flex;
+        align-items: center;
+        align-content: center;
+    }
+
+    .h3{
+    float: left;
+    height: 3px;
+    margin-top: 48px;
+    margin-left: 22px;
+    align-items: center;
+
+    }
     
 
 }
@@ -138,7 +172,36 @@
     text-align: center;
     align-items: center;
     margin: auto;
+    
 }
+.buttons3{
+    display: flex;
+    float: right;
+    margin-right: 9px;
+  }
+  
+  .heading_invite{
+   
+    margin-left: 13px;
+    margin-top: 4px;
+    height: 75px;
+  }
+
+  .h4{
+    float: left;
+    height: 3px;
+    margin-top: 4px;
+    margin-left: 60px;
+    align-items: center;
+
+    }
+    .buttons4{
+        display: flex;
+        float: right;
+        margin-right: 9px;
+        margin-top: -49px;
+      }
+      
 
 
 

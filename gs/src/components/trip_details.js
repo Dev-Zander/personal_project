@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert'
+import '../styles/reset.css'
+import '../styles/style.css'
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 
 
@@ -89,24 +93,26 @@ class TravelerDetail extends Component {
         return (
 
             <div>
-                <Link to='/dashboard' className='buttons'>
-                    <button>Dashboard</button></Link>
-                <br />
-                <br />I am the Trip Details Page!
-    
-                <br />
+                <Link to='/dashboard' style={{marginTop:1}} className='buttons3'><RaisedButton label="Dashboard" primary={true} /></Link>
+             
 
+               <h1 style={{margin:25,fontSize:20}}>Trip Details</h1>
 
-
-                <h3>Please Accept Trip or Reject Trip</h3>
-
-                <div className='invited_trips'>
-
-                    <button onClick={() => this.joinTrip()}>Join Trip</button><button onClick={() => this.rejectTrip()}>Reject Trip</button>
-                    <br/>
+                <div className='list'>
                     {this.state.tripName}
                     <br/>
                     {this.state.tripLocation}
+
+                <div  classsName="buttons">
+                    <div>
+                    <RaisedButton style={{}} onClick={() => this.joinTrip()} label="Join TRIP" primary={true}/>
+                   </div>
+                   <br/>
+                   <div>
+                    <RaisedButton style={{}} onClick={() => this.rejectTrip()} label="Reject TRIP"/>
+                   </div>
+                   </div>
+                    <br/>
                     
 
                 </div>

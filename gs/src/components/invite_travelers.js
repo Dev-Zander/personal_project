@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import swal from 'sweetalert';
+import '../styles/reset.css'
+import '../styles/style.css'
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class InviteTravelers extends Component {
 
@@ -29,24 +33,28 @@ class InviteTravelers extends Component {
 
             <div>
                 
-                <h1>I am the Invite Travelers</h1>
+                <h1 className="heading_invite">Invite Travelers</h1>
 
-            <Link to='/dashboard' className='buttons'>
-            <button>Dashboard</button></Link>
+           
+
+             <Link to='/dashboard' className='buttons3'><RaisedButton label="Dashboard" primary={true} /></Link>
+
+            <h3 style={{marginLeft:13}}className="h3">Input Number for Your Invitee</h3>
+
+            <div className='list'>
+            
+            <input  ref="phoneNumber" hintText="Phone Number" type="number" pattern="0-9" maxlenght="10" minlength="10" style={{margin:25}}/>
             <br/>
             <br/>
 
-            <h3>Input The Phone Number for Your Invitee</h3>
+        <div className="myButtons2">
+            <Link to='/dashboard' className='buttons'><RaisedButton label="Done" primary={true} /></Link>
+            <Link to='/dashboard' className='buttons'><RaisedButton label="Cancel" primary={true} /></Link>
+            <RaisedButton style={{margin:5}} onClick={()=> this.inviteUser()} label="Submit" />
+        </div>
 
-            <div className='invite_list'>
-            <input ref="phoneNumber" placeholder="Numbers Only" type="number" pattern="0-9"/>
-            <br/>
-            <br/>
-            <button onClick={()=> this.inviteUser()}>Submit</button>
-            <Link to='/dashboard' className='buttons'>
-            <button>Done</button></Link><button>Cancel</button>
-            <br/>
-            <br/>
+            
+            
             
             
             

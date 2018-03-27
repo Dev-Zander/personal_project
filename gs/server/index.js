@@ -9,6 +9,7 @@ const checkForSession = require('./middlewares/checkForSession')
 const invited = require('./controllers/invitedList_controller')
 const auth = require('./controllers/auth_controller')
 const cors = require('cors');
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 
 const {
@@ -28,6 +29,9 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 app.use( express.static( `${__dirname}/../build` ) );
+
+
+
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -102,6 +106,7 @@ app.put('/api/profile', auth.updateUser)
 app.post('/api/newTrip', auth.newTrip)
 app.delete('/api/trip/:id', auth.deleteTrip)
 app.post('/api/invite', auth.inviteTraveler)
+app.post('/api/payment', auth.stripe)
 
 
 

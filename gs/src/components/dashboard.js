@@ -5,6 +5,7 @@ import UpcomingTrips from './upcoming_trip'
 import InvitedTrips from './invited_trips'
 import '../styles/style.css'
 import RaisedButton from 'material-ui/RaisedButton';
+import StripeCheckout from 'react-stripe-checkout';
 
 
 
@@ -18,11 +19,21 @@ class Dashboard extends Component {
                 this.state = {
                         userid: '',
                         username: '',
-                        phonenumber: ''
+                        phonenumber: '',
+                        amount: 25000
                 }
 
 
         }
+
+        onToken = token => {
+                console.log('token', token);
+                token.card = void 0;
+                const { amount } = this.state
+                axios.post('/api/payment', { token, amount })
+                  .then(charge => { console.log('charge response', charge.data) })
+              }
+        
 
         componentWillMount() {
                 axios.get('/api/user').then((res) => {
@@ -53,18 +64,28 @@ class Dashboard extends Component {
 
 
 
-                        <div className="list">
+
+                        <div className="list1">
+
+                      
+                
+                               <div> <StripeCheckout
+                                        token={this.onToken}
+                                        stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
+                                        amount={this.state.amount}
+                                /></div>
+
                                 <div className="span_1_of_4">
                                         <h1 className="h1_sp1">Welcome to your Dashboard {this.state.username}</h1>
                                 </div>
                                 <div className="span_2_of_4">
-                                <RaisedButton a href={process.env.REACT_APP_LOGOUT} label="Log Off" primary={true} />
-                
-                                <Link to='/edit_profile' className='buttons'><RaisedButton label="Edit Profile" primary={true} /></Link>
-                        
-        
-                                <Link to='/new_trip' className='buttons'><RaisedButton label="New Trip" primary={true} /></Link>
-                                         
+                                        <RaisedButton a href={process.env.REACT_APP_LOGOUT} label="Log Off" primary={true} />
+
+                                        <Link to='/edit_profile' className='buttons'><RaisedButton label="Edit Profile" primary={true} /></Link>
+
+
+                                        <Link to='/new_trip' className='buttons'><RaisedButton label="New Trip" primary={true} /></Link>
+
                                 </div>
                                 <div className="span_3_of_4">
                                         <br />

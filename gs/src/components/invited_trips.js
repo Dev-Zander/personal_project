@@ -46,7 +46,7 @@ class InvitedTrips extends Component {
 
 <div className='invtied_Results'>
 
-                {trip.trip_location}<br/>{trip.trip_start}
+<h4 className="invited_trip">{`${trip.trip_start} ${trip.trip_location}`}</h4>
             
             
 </div>
@@ -71,7 +71,6 @@ class InvitedTrips extends Component {
                 <h4>This is where the list of trips a user has been invited to will be displayed</h4>
 
                 {displaytrips}
-
             </div>
 
 

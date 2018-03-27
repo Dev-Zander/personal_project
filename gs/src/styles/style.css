@@ -66,6 +66,21 @@
   -ms-flex-pack: center;
   justify-content: center; }
 
+.list1 {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../media/blur12.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
 .span_1_of_4 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -131,6 +146,15 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
+  .span_3_of_4 .Results1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center; }
   .span_3_of_4 .Results {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -144,6 +168,23 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .span_3_of_4 .myButtons2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center; }
+  .span_3_of_4 .h3 {
+    float: left;
+    height: 3px;
+    margin-top: 48px;
+    margin-left: 22px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
@@ -179,3 +220,32 @@
   -ms-flex-align: center;
   align-items: center;
   margin: auto; }
+
+.buttons3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: right;
+  margin-right: 9px; }
+
+.heading_invite {
+  margin-left: 13px;
+  margin-top: 4px;
+  height: 75px; }
+
+.h4 {
+  float: left;
+  height: 3px;
+  margin-top: 4px;
+  margin-left: 60px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.buttons4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: right;
+  margin-right: 9px;
+  margin-top: -49px; }

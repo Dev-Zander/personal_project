@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert'
-
+import '../styles/reset.css'
+import '../styles/style.css'
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class NewTrip extends Component{
    
@@ -37,35 +40,30 @@ class NewTrip extends Component{
         return(
 
             <div>
-<h1> YOU ARE ADDING A NEW TRIP!</h1>
+<h1 style={{margin:25}}>Add New Trip</h1>
 
-<br/>
-<br/>
-<Link to='/dashboard' className='buttons'> <button>Dashboard</button></Link>
+<Link to='/dashboard' styly={{}} className='buttons4'><RaisedButton label="Dashboard" primary={true} /></Link>
 
-<div className='new_trip'>
-                    <br />
-                    <br />
-                    <br />
-                    <h4>Trip Name</h4>
+<div className='list1'>
+<span className="h4">
+                    <h4></h4>
                     <input ref="tripName" placeholder="Trip Name" type="text" />
                     <br />
-                    <h4>Trip Location</h4>
+                    <h4></h4>
                     <input id="search_type" ref="tripLocation" placeholder="Trip Location" type="text" />
                     <br />
-                    <h4>Trip Start Date</h4>
+                    <h4></h4>
                     <input ref="tripStart" placeholder="ex.02022018" type="date" />
                     <br />
-                    <h4>Trip End Date</h4>
+                    <h4></h4>
                     <input ref="tripEnd" placeholder="ex.02022018" type="date" />
-                    <br />
-                    <br/>
-                    <a href="/#/dashboard">
-                    <button>Cancel</button></a>
-                    <button onClick={() =>this.tripInfo()}>Save</button>
-      
-                    <br />
-                    <br />
+
+                     <div className="myButtons">
+                    <Link to='/dashboard' style={{margin:0,marginRight:30}}className='buttons4'><RaisedButton label="Cancel" primary={true} /></Link>
+                    <RaisedButton  onClick={() =>this.tripInfo()} label="Save" />
+                    </div>
+      </span>
+
                 </div>
 
             </div>
