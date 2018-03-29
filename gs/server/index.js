@@ -28,21 +28,20 @@ massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
 })
 
+app.use(bodyParser.json())
+
+
 app.use( express.static( `${__dirname}/../build` ) );
 
 
 
 
 app.use(cors())
-app.use(bodyParser.json())
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie:{
-        maxAge:null
-    }
-
+    maxAge:300000
 }))
 
 app.use(checkForSession)
@@ -83,6 +82,7 @@ passport.deserializeUser((id, done) => {
     })
 })
 
+app.get('/api/loggedIn', auth.loggedIn)
 app.get('/api/createdtriplist/:id', auth.createdTripslist)
 app.get('/api/trip_info/:id',auth.getTripDetails)
 app.get('/auth', passport.authenticate('auth0'))

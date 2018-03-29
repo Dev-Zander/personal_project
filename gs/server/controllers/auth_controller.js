@@ -3,8 +3,18 @@ const users = require('../temp/users');
 let id = 1;
 
 module.exports = {
+  loggedIn: (req,res,next) => {
+    const { session } = req;
+    const userid = req.user.id
+    res.status(200).send(userid)
+  
+    console.log(userid)
+  },
+
+
   login: (req, res, next) => {
     const { session } = req;
+  
     const { username, password } = req.body;
 
     const user = users.find(user => user.username === username && user.password === password);
